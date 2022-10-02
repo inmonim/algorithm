@@ -5,13 +5,7 @@ def solution(s, n):
             answer += i
             continue
         if ord(i) < 97:
-            if ord(i) + n > 90:
-                answer += chr(ord(i) +n - 26)
-            else:
-                answer += chr(ord(i) +n)
+            answer += chr((ord(i)+n-ord('A'))%26 + ord('A'))
         else:
-            if ord(i) + n > 122:
-                answer += chr(ord(i) +n - 26)
-            else:
-                answer += chr(ord(i) +n)
+            answer += chr((ord(i)+n-ord('a'))%26 + ord('a'))
     return answer
