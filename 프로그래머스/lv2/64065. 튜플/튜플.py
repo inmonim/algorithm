@@ -1,29 +1,18 @@
 def solution(s):
-    s = s[1:-1]
 
-    arr = []
+    arr = s[2:-2].split('},{')
 
-    for i in s:
-        if i == '{':
-            tmp = []
-            tmp2 = ''
-        elif i == ',':
-            tmp.append(int(tmp2))
-            tmp2 = ''
-        elif i == '}':
-            tmp.append(int(tmp2))
-            arr.append(tmp)
-            tmp = []
-        else:
-            tmp2 += i
+    arr2 = []
 
-    arr.sort(key=lambda x:len(x))
+    for i in arr:
+        arr2.append(i.split(','))
+    arr2.sort(key=len)
 
-    result = [arr[0][0]]
+    result = [int(arr2[0][0])]
 
-    for i in range(len(arr)-1):
-        for j in arr[i+1]:
-            if j not in arr[i]:
-                result.append(j)
+    for i in range(len(arr2)-1):
+        for j in arr2[i+1]:
+            if j not in arr2[i]:
+                result.append(int(j))
     
     return result
