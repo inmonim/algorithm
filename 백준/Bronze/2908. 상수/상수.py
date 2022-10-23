@@ -1,1 +1,1 @@
-print(max(list(map(int, input()[::-1].split()))))
+print(max(input()[::-1].split()))
