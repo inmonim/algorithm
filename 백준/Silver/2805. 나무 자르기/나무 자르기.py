@@ -11,7 +11,7 @@ for i in arr:
     else:
         dic[i] += 1
         
-T = sorted(dic.keys(), reverse=True)
+T = sorted(dic.keys())[::-1]
 R = 0
 mul = 0
 for i in range(1, len(T)+1):
