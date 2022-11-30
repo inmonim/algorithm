@@ -1,8 +1,9 @@
-N,M,B = map(int, input().split())
+import sys
+N,M,B = map(int, sys.stdin.readline().split())
 A = [0,0]
 Map = []
 for i in range(N):
-    Map.append(list(map(int, input().split())))
+    Map.append(list(map(int, sys.stdin.readline().split())))
 D = {}
 for i in Map:
     for j in i:
