@@ -11,9 +11,9 @@ for i in range(M):
 for i in range(N+1):
     node[i] = sorted(node[i], reverse=True)
 
-# dfs
+# bfs
 stack = node[V].copy()
-dfs_ans = str(V)
+dfs_ans = [str(V)]
 dfs_vis = {V:1}
 
 while stack:
@@ -21,24 +21,24 @@ while stack:
     if dfs_vis.get(next_node):
         continue
     else:
-        dfs_ans += ' '+str(next_node)
+        dfs_ans.append(str(next_node))
         dfs_vis[next_node] = 1
         stack.extend(node[next_node])
-print(dfs_ans)
+print(' '.join(dfs_ans))
 
 for i in range(N+1):
     node[i] = node[i][::-1]
 
 # bfs
 Q = node[V].copy()
-bfs_ans = str(V)
+bfs_ans = [str(V)]
 bfs_vis = {V:1}
 while Q:
     next_node = Q.pop(0)
     if bfs_vis.get(next_node):
         continue
     else:
-        bfs_ans += ' '+str(next_node)
+        bfs_ans.append(str(next_node))
         bfs_vis[next_node] = 1
         Q.extend(node[next_node])
-print(bfs_ans)
+print(' '.join(bfs_ans))
