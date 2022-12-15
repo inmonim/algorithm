@@ -7,9 +7,7 @@ for j in txt[0].split('+'):
     N += int(j)
 
 for i in range(1, len(txt)):
-    n = 0
     for j in txt[i].split('+'):
-        n += int(j)
-    N -= n
+        N -= int(j)
 
 print(N)
