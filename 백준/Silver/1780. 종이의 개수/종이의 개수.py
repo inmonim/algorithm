@@ -33,7 +33,7 @@ def sol(arr, N):
 N = int(input())
 
 dic = {-1:0, 0:0, 1:0}
-arr = [list(map(int, input().split())) for _ in range(N)]
+arr = [list(map(int, sys.stdin.readline().split())) for _ in range(N)]
 
 sol(arr, N)
 
