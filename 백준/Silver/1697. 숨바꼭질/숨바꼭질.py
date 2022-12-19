@@ -1,32 +1,21 @@
+import sys
 from collections import deque
+input = sys.stdin.readline
+max = 10 ** 5
+dist = [0] * (max + 1)
+n, k = map(int, input().split())
 
-def check(n):
-    if n < 0 or n > 100000:
-        return
-    if vis.get(n) == None:
-        next_li.append(n)
-        vis[n] = 1
-
-N,M = map(int, input().split())
-
-vis = {}
-cnt = 0
-next_li = [N]
-
-
-while next_li:
-    Q = deque(next_li)
-    next_li = []
-    cnt += 1
-    while Q:
-        n = Q.popleft()
-        check(n*2)
-        check(n+1)
-        check(n-1)
-        if n == M or M in next_li:
-            if n == M:
-                print(0)
-            else:
-                print(cnt)
-            next_li = []
+def bfs():
+    q = deque()
+    q.append(n)
+    while q:
+        x = q.popleft()
+        if x == k:
+            print(dist[x])
             break
+        for nx in (x-1, x + 1, x * 2):
+            if 0 <= nx <= max and not dist[nx]:
+                dist[nx] = dist[x] + 1
+                q.append(nx)
+
+bfs()
