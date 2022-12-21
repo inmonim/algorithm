@@ -22,10 +22,10 @@ while TF:
         if n%2 == 0:
             sol(n//2)
         sol(n-1)
-        if n == 1 or 1 in next_li:
-            if n == 1:
+        if n == 1:
+            if cnt == 1:
                 print(0)
             else:
-                print(cnt)
+                print(cnt-1)
             TF = 0
             break
