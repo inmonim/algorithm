@@ -12,10 +12,9 @@ def solution(targets):
     ml = d[d_list[-1]]
     i = d_list[0]
     last = d[i]
-    flag = 0
     
     # [시작 : 최소끝] 쌍의 시작으로 순회
-    for i in d_list:
+    for i in d_list[1:]:
         
         # 시작 값이 이전 최소끝보다 길 경우 요격, 최소끝을 초기화
         if i >= last:
