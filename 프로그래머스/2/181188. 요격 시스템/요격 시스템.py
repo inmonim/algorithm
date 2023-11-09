@@ -9,9 +9,8 @@ def solution(targets):
              d[t[0]] = t[1]
 
     d_list = sorted(d.keys())
-    ml = d[d_list[-1]]
-    i = d_list[0]
-    last = d[i]
+    ml = max(d.values())
+    last = d[d_list[0]]
     
     # [시작 : 최소끝] 쌍의 시작으로 순회
     for i in d_list[1:]:
