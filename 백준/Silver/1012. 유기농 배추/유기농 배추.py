@@ -13,7 +13,7 @@ for T in range(int(input())):
                 stack = [(y,x)]
                 A += 1
             while stack:
-                sy, sx = stack.pop(0)
+                sy, sx = stack.pop()
                 arr[y][x] = 0
                 for dy,dx in [(-1,0),(0,1),(1,0),(0,-1)]:
                     ny, nx = dy+sy, dx+sx
