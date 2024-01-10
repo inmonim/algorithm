@@ -1,4 +1,4 @@
-N, y, x = map(int, input().split())
+N, y, x = map(int, input().split(' '))
 
 L = 2**N
 l = L//2
@@ -6,20 +6,22 @@ l = L//2
 answer = 0
 
 while l != 0:
-    if y >= l:
-        if x >= l:
-            answer += 3*(l**2)
-            y -= l
-            x -= l
-        else:
-            answer += 2*(l**2)
-            y -= l
-    else:
-        if x >= l:
-            answer += (l**2)
-            x -= l
-        else:
-            answer += 0
+    N -= 1
+    score = 4**(N)
+    
+    if l <= y:
+        if l <= x:
+            answer += score * 3
+            x = x - l
+        elif l > x:
+            answer += score * 2
+        y = y - l
+        
+    elif l > y:
+        if l <= x:
+            answer += score
+            x = x - l
+    
     l = l//2
 
 print(answer)
