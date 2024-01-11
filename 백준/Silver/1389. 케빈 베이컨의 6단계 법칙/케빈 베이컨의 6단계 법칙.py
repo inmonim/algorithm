@@ -1,36 +1,32 @@
 import sys
 
-N, T = map(int, input().split())
-node = [[] for _ in range(N+1)]
-bacon = [0] * (N+1)
+input = sys.stdin.readline
 
-for i in range(T):
-    a, b = map(int, sys.stdin.readline().split())
-    node[a].append(b)
-    node[b].append(a)
+N, M = map(int, input().split(' '))
 
+friends = [[] for _ in range(N+1)]
+cnt_list = [0] * (N+1)
+
+for i in range(M):
+    s, e = map(int, input().split(' '))
+    friends[s].append(e)
+    friends[e].append(s)
 
 for i in range(1, N+1):
-    i_bacon = [0] * (N+1)
-    check = 0
-    cnt = 1
-    Q = node[i].copy()
-    next_li = []
+    check = {i : 0}
+    Q = [friends[i]]
+    cnt = 0
     while Q:
-        next_n = Q.pop(0)
-        if i_bacon[next_n] == 0:
-            i_bacon[next_n] = cnt
-            check += 1
-        next_li.extend(node[next_n])
-        
-        if check == N:
-            break
-        
-        if not Q:
-            Q.extend(next_li)
-            next_li = []
-            cnt += 1
-    bacon[i] = sum(i_bacon)
+        cnt += 1
+        nodes = Q.pop(0)
+        new_nodes = []
+        for node in nodes:
+            if not check.get(node):
+                check[node] = cnt
+                new_nodes.extend(friends[node])
+        if new_nodes:
+            Q.append(new_nodes)
+        if len(check) == N:
+            cnt_list[i] = sum(check.values())
 
-mb = min(bacon[1:])
-print(bacon.index(mb))
+print(cnt_list.index(min(cnt_list[1:])))
