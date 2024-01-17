@@ -1,22 +1,24 @@
-node = [[] for _ in range(int(input())+1)]
-q = []
-for c in range(int(input())):
+import sys
+
+input = sys.stdin.readline
+
+N = int(input())
+route = [[] for _ in range(N+1)]
+
+for i in range(int(input())):
+    s, e = map(int, input().split())
     
-    a, b = map(int, input().split())
-    node[a].append(b)
-    node[b].append(a)
+    route[s].append(e)
+    route[e].append(s)
 
-visit = {i:0 for i in range(len(node))}
-q.extend(node[1])
-visit[1] = 1
-node[1] = []
-cnt = 0
-while q:
-    next_c = q.pop(0)
-    if visit.get(next_c) == 0:
-        visit[next_c] = 1
-        q.extend(node[next_c])
-        node[next_c] = []
-        cnt +=1
+Q = route[1].copy()
+visited = [0] * (N+1)
+visited[1] = 1
 
-print(cnt)
+while Q:
+    n = Q.pop(0)
+    if not visited[n]:
+        visited[n] = 1
+        Q.extend(route[n])
+
+print(sum(visited[2:]))
