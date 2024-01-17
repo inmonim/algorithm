@@ -1,13 +1,17 @@
-N = int(input())
+import sys
 
-arr = [int(input()) for _ in range(N)]
+p=sys.stdin.readline
 
-if N <= 2:
-    print(sum(arr))
+N=int(p())
+
+a=[int(p()) for _ in range(N)]
+
+if N<=2:
+    print(sum(a))
 
 else:
-    sum_max = [arr[0], arr[0]+arr[1], max(arr[0]+arr[2], arr[1]+arr[2])]
+    s=[a[0], a[0]+a[1], max(a[0]+a[2], a[1]+a[2])]
 
     for i in range(3, N):
-        sum_max.append(max(sum_max[i-3] + arr[i-1] + arr[i], sum_max[i-2] + arr[i]))
-    print(sum_max[-1])
+        s.append(max(s[i-3] + a[i-1] + a[i], s[i-2] + a[i]))
+    print(s[-1])
