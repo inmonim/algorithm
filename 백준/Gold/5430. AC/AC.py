@@ -9,12 +9,7 @@ for t in range(int(input())):
     arr_string = input().strip()
     string = ''
     if l:
-        for s in arr_string[1:]:
-            if s.isdigit():
-                string += s
-            else:
-                arr.append(string)
-                string = ''
+        arr = arr_string[1:-1].split(',')
     
     p = 0
     for f in func:
@@ -27,7 +22,7 @@ for t in range(int(input())):
             if not arr:
                 print('error')
                 break
-            del arr[p]
+            arr.pop(p)
     else:
         if p == -1:
             arr.reverse()
