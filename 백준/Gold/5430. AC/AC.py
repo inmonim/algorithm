@@ -1,29 +1,35 @@
 import sys
 
-input = sys.stdin.readline
 
-for t in range(int(input())):
-    func = input()
-    l = int(input())
-    arr = []
-    arr_string = input().strip()
-    string = ''
-    if l:
-        arr = arr_string[1:-1].split(',')
-    
-    p = 0
-    for f in func:
-        if f == 'R':
-            if p == 0:
-                p = -1
-            elif p == -1:
-                p = 0
-        elif f == 'D':
-            if not arr:
-                print('error')
-                break
-            arr.pop(p)
-    else:
-        if p == -1:
-            arr.reverse()
-        print(f"[{','.join(arr)}]")
+def Sol():
+    input = sys.stdin.readline
+
+    T = int(input())
+
+    for _ in range(T):
+        commands = [*map(len, input().rstrip().replace("RR", "").split("R"))]
+        is_flip = (len(commands) + 1) % 2
+
+        n = int(input())
+        if n == 0:
+            input()
+            arr = []
+        else:
+            arr = input().strip("[]\n").split(",")
+
+        front = sum(commands[0::2])
+        try:
+            back = sum(commands[1::2])
+        except:
+            back = 0
+
+
+        if front + back > n:
+            print("error")
+            continue
+        else:
+            arr = arr[front:(n-back)]
+
+        print(f'[{",".join(reversed(arr) if is_flip else arr)}]')
+
+Sol()
