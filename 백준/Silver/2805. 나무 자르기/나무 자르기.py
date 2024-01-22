@@ -1,27 +1,27 @@
 import sys
 
-n,m = map(int, sys.stdin.readline().split())
+input = sys.stdin.readline
 
-arr = list(map(int, sys.stdin.readline().split()))
-dic = {}
+N, T = map(int, input().split())
 
-for i in arr:
-    if i not in dic:
-        dic[i] = 1
-    else:
-        dic[i] += 1
-        
-T = sorted(dic.keys())[::-1]
-R = 0
+trees = list(map(int, input().split()))
+
+d = {}
+for t in trees:
+    d[t] = d[t]+1 if d.get(t) else 1
+    
+k = sorted(d.keys())[::-1]
+n = 0
 mul = 0
-for i in range(1, len(T)+1):
-    if i < len(T):
-        mul += dic[T[i-1]]
-        R += (T[i-1] - T[i]) * mul
-        if R >= m:
-            print(T[i] + (R-m)//mul)
+for i in range(len(k)-1):
+    if n < T:
+        mul += d[k[i]]
+        n += mul * (k[i] - k[i+1])
+
+        if n >= T:
+            print(k[i+1] + (n-T)//mul)
             break
-    else:
-        mul += dic[T[i-1]]
-        R += (T[i-1]) * mul
-        print((R-m)//mul)
+else:
+    mul += d[k[-1]]
+    n += mul * k[-1]
+    print((n-T)//mul)
