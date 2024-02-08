@@ -4,15 +4,17 @@ input = sys.stdin.readline
 
 Y, X = map(int, input().split())
 
-mat = [input().strip() for _ in range(Y)]
-visited = [[0]*X for _ in range(Y)]
+mat = []
+p = 0
 
-now = []
 for y in range(Y):
-    for x in range(X):
-        if mat[y][x] == 'I':
-            now = [y, x]
-            break
+    arr = input().strip()
+    if not p and 'I' in arr:
+        now = [y, arr.index('I')]
+        p = 1
+    mat.append(arr)
+
+visited = [[0]*X for _ in range(Y)]
 
 cnt = 0
 Q = [now]
