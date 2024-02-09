@@ -1,4 +1,5 @@
 import sys
+from collections import deque
 
 input = sys.stdin.readline
 
@@ -17,9 +18,10 @@ for y in range(Y):
 visited = [[0]*X for _ in range(Y)]
 
 cnt = 0
-Q = [now]
+Q = deque()
+Q.append(now)
 while Q:
-    y, x = Q.pop(0)
+    y, x = Q.popleft()
     for dy, dx in ((0, 1), (1, 0), (-1, 0), (0, -1)):
         ny, nx = dy + y, dx + x
         if 0 <= ny < Y and 0 <= nx < X:
