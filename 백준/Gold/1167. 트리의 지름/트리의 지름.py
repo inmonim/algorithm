@@ -1,12 +1,13 @@
 import sys
+from collections import deque
 
 input = sys.stdin.readline
 
 def bfs(start, end):
     visited = [0 for _ in range(N+1)]
-    Q = [(start, 0)]
+    Q = deque([(start, 0)])
     while Q:
-        n = Q.pop(0)
+        n = Q.popleft()
         i, x = n
         visited[i] = 1
         nn = route[i]
