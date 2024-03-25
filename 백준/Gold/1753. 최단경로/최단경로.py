@@ -8,27 +8,25 @@ start = int(input())
 reach = [M*20 for _ in range(N+1)]
 reach[start] = 0
 
-node = [{} for _ in range(N+1)]
+node = [[] for _ in range(N+1)]
 for _ in range(M):
     s, e, v = map(int, input().split())
-    if e in node[s]:
-        if node[s][e] > v:
-            node[s][e] = v
-    else:
-        node[s][e] = v
+    node[s].append((v, e))
 
 Q = []
-for k in node[start].keys():
-    Q.append((node[start][k], k))
-    reach[k] = node[start][k]
+heapq.heappush(Q, (0, start))
 
 while Q:
-    v, k = Q.pop(0)
-    for nk in node[k].keys():
-        nv = v + node[k][nk]
-        if reach[nk] > nv:
-            reach[nk] = nv
-            heapq.heappush(Q, (nv, nk))
+    v, i = heapq.heappop(Q)
+    if reach[i] < v:
+        continue
+    
+    for n_node in node[i]:
+        nv, ni = n_node
+        rv = v + nv
+        if reach[ni] > rv:
+            reach[ni] = rv
+            heapq.heappush(Q, (rv, ni))
 
 for i in reach[1:]:
     if i == M*20:
