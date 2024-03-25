@@ -30,6 +30,6 @@ while Q:
 
 for i in reach[1:]:
     if i == M*20:
-        print('INF')
+        sys.stdout.write('INF'+'\n')
     else:
-        print(i)
+        sys.stdout.write(str(i)+'\n')
