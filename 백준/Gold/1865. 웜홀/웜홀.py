@@ -19,17 +19,18 @@ for _ in range(TC):
         
     dist = [M*T*2] * (N+1)
     
-    p = 'NO'
-    for i in range(N):
-        
-        for j in range(1, N+1):
+    def b_f():
+        for i in range(N):
             
-            for n_node in node[j]:
-                nv, ni = n_node
-                rv = nv + dist[j]
-                if dist[ni] > rv:
-                    dist[ni] = rv
-                    if i == N-1:
-                        p = 'YES'
-
-    print(p)
+            for j in range(1, N+1):
+                
+                for n_node in node[j]:
+                    nv, ni = n_node
+                    rv = nv + dist[j]
+                    if dist[ni] > rv:
+                        dist[ni] = rv
+                        if i == N-1:
+                            return 'YES'
+        return 'NO'
+    
+    print(b_f())
