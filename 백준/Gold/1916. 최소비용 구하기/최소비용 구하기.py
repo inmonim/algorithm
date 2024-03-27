@@ -16,7 +16,7 @@ Q = []
 heapq.heappush(Q, (0, S))
 
 while Q:
-    v, i = Q.pop(0)
+    v, i = heapq.heappop(Q)
     if v >= visit[E]:
         continue
     for nv, ni in node[i]:
