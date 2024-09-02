@@ -1,14 +1,9 @@
-import sys
-
-input = sys.stdin.readline
-N, C = map(int, input().split())
-
-arr = sorted([int(input()) for _ in range(N)])
+stdin = open(0, "rb")
+N, C = map(int, stdin.readline().split())
+arr = sorted(list(map(int, stdin.read().rstrip().split())))
 
 min_range = 1
 max_range = arr[-1] - arr[0]
-
-result = 0
 
 while min_range <= max_range:
     threshold = (min_range + max_range)//2
@@ -22,10 +17,9 @@ while min_range <= max_range:
             now = arr[i]
             if emplace >= C:
                 min_range = threshold + 1
-                result = threshold
                 break
     else:
         if emplace < C:
             max_range = threshold - 1
 
-print(result)
+print(max_range)
