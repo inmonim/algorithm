@@ -1,10 +1,10 @@
 import sys
-
+from array import array
 input = sys.stdin.readline
 
 n, m = map(int, input().split())
 
-arr = list(map(int, input().split()))
+arr = array('i', map(int, input().split()))
 
 time_dict = {}
 
