@@ -4,7 +4,7 @@ input = sys.stdin.readline
 
 n, m = map(int, input().split())
 
-arr = array('i', map(int, input().split()))
+arr = array('I', map(int, input().split()))
 
 time_dict = {}
 
