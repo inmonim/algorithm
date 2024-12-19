@@ -1,17 +1,14 @@
-import math
+t = int(input())
 
-def integer_sqrt(n):
-    # 이분 탐색으로 제곱근 찾기
-    low, high = 0, n
-    while low <= high:
-        mid = (low + high) // 2
-        if mid * mid <= n < (mid + 1) * (mid + 1):
-            return mid
-        elif mid * mid < n:
-            low = mid + 1
+def bs(x):
+    b, t = 1, x-1
+    
+    while b <= t:
+        m = (b + t) // 2
+        if m**2 < x:
+            b = m + 1
         else:
-            high = mid - 1
+            t = m - 1
+    return b
 
-# 입력 받기
-n = int(input().strip())  # 최대 800자리 수
-print(integer_sqrt(n))
+print(bs(t))
