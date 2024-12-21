@@ -1,15 +1,12 @@
 import sys
-from collections import deque
 
 input = sys.stdin.readline
-
-from collections import deque
 
 n, m = map(int, input().split())
 
 mat = [list(map(int, input().split())) for _ in range(n)]
 
-q = deque()
+q = []
 cnt = 0
 answer = -1
 while answer == -1:
