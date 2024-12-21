@@ -1,10 +1,15 @@
+import sys
+from collections import deque
+
+input = sys.stdin.readline
+
 n, m = map(int, input().split())
 mat = [list(map(int, input().split())) for _ in range(n)]
 answer = -1
 cnt = 0
 while answer == -1:
     visit = [[0]*m for _ in range(n)]
-    q = []
+    q = deque()
     for y in range(n):
         if q:
             break
