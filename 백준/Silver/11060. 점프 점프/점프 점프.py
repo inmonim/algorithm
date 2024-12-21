@@ -1,22 +1,18 @@
 n = int(input())
 arr = list(map(int, input().split()))
+dp = [0] * n
 
-stack = set()
-stack.add((0, arr[0]))
-answer = 0
-f = 1 if len(arr) == 1 else 0
-while stack and not f:
-    answer += 1
-    cur_stack = set()
-    for start_idx, able_range in stack:
-        for able_idx in range(1, able_range+1):
-            target_idx = start_idx + able_idx
-            if target_idx >= n-1:
-                f = 1
-                break
-            cur_stack.add((target_idx, arr[target_idx]))
-    stack = cur_stack
-if f:
-    print(answer)
+def func():
+    for i in range(n):
+        for ii in range(i+1, i+1+arr[i]):
+            if ii >= n:
+                return max(dp)
+            if not dp[ii] or dp[i] + 1 < dp[ii]:
+                if i > 0 and dp[i] == 0:
+                    return -1
+                dp[ii] = dp[i] + 1
+
+if n == 1:
+    print(0)
 else:
-    print(-1)
+    print(func())
