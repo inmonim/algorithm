@@ -1,0 +1,15 @@
+-- 코드를 작성해주세요
+# SELECT 
+# FROM FISH_INFO fi JOIN FISH_NAME_INFO fni ON fi.FISH_TYPE = fni.FISH_TYPE
+# GROUP BY FISH_NAME
+
+SELECT fi.ID, fni.FISH_NAME, fi.LENGTH
+FROM FISH_INFO fi
+JOIN FISH_NAME_INFO fni ON fi.FISH_TYPE = fni.FISH_TYPE
+JOIN (
+    SELECT FISH_TYPE, MAX(LENGTH) AS max_length
+    FROM FISH_INFO
+    WHERE LENGTH > 10 -- 10cm 이하 제외
+    GROUP BY FISH_TYPE
+) AS max_fish ON fi.FISH_TYPE = max_fish.FISH_TYPE AND fi.LENGTH = max_fish.max_length
+ORDER BY fi.ID;
