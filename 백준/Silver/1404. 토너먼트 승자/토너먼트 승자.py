@@ -17,13 +17,19 @@ for i in range(4):
     first[2*i] = mat[2*i][2*i+1]
     first[2*i+1] = mat[2*i+1][2*i]
 
-for i in range(4):
-    if i in [0, 2]:
-        second[2*i] = first[2*i] * (first[2*(i+1)] * mat[2*i][2*(i+1)] + first[2*(i+1)+1] * mat[2*i][2*(i+1)+1])
-        second[2*i+1] = first[2*i+1] * (first[2*(i+1)] * mat[2*i+1][2*(i+1)] + first[2*(i+1)+1] * mat[2*i+1][2*(i+1)+1])
-    else:
-        second[2*i] = first[2*i] * (first[2*(i-1)] * mat[2*i][2*(i-1)] + first[2*(i-1)+1] * mat[2*i][2*(i-1)+1])
-        second[2*i+1] = first[2*i+1] * (first[2*(i-1)] * mat[2*i+1][2*(i-1)] + first[2*(i-1)+1] * mat[2*i+1][2*(i-1)+1])
+for i in range(8):
+    if i in [0, 1]:
+        for ii in range(2, 4):
+            second[i] += first[i] * first[ii] * mat[i][ii]
+    elif i in [2, 3]:
+        for ii in range(0, 2):
+            second[i] += first[i] * first[ii] * mat[i][ii]
+    elif i in [4, 5]:
+        for ii in range(6, 8):
+            second[i] += first[i] * first[ii] * mat[i][ii]
+    elif i in [6, 7]:
+        for ii in range(4, 6):
+            second[i] += first[i] * first[ii] * mat[i][ii]
 
 for i in range(8):
     se = [4, 8] if i < 4 else [0, 4]
