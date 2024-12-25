@@ -6,7 +6,8 @@ from collections import deque
 n, m = map(int, input().split())
 tree = [{} for _ in range(n+1)]
 
-def bfs(s, e, tree):
+
+def bfs(s, e):
     q = deque([(s, 0)])
     visited = set([s])
     while q:
@@ -25,5 +26,6 @@ for _ in range(n-1):
 
 for _ in range(m):
     s, e = map(int, input().split())
-    print(bfs(s, e, tree))
+    print(bfs(s, e))
+    
     
