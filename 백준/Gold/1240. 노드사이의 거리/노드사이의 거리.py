@@ -1,11 +1,16 @@
+import sys
+
+input = sys.stdin.readline
+
+from collections import deque
 n, m = map(int, input().split())
 tree = [{} for _ in range(n+1)]
 
 def bfs(s, e, tree):
-    q = [(s, 0)]
+    q = deque([(s, 0)])
     visited = set([s])
     while q:
-        ci, cs = q.pop()
+        ci, cs = q.popleft()
         for k, v in tree[ci].items():
             if k == e:
                 return cs + v
@@ -21,3 +26,4 @@ for _ in range(n-1):
 for _ in range(m):
     s, e = map(int, input().split())
     print(bfs(s, e, tree))
+    
