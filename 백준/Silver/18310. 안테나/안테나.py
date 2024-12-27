@@ -20,5 +20,7 @@ for i in range(1, len(arr)):
     if ms > ls+rs:
         ms = ls+rs
         answer = i
+    else:
+        break
 
 print(answer+1)
