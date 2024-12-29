@@ -1,16 +1,10 @@
 import sys
 from collections import Counter
 
-input = sys.stdin.readline
-
 def sol():
-    words = set()
-    chars = []
-    while (i := input().strip()) != "-":
-        words.add(i)
-    while (i := input().strip()) != "#":
-        chars.append(i)
-
+    input = sys.stdin.read()
+    words, chars = input.split('-')[0].strip().split('\n'), input.split('-')[1].strip().split('\n')[:-1]
+    
     char_list = []
     for char in chars:
         char_dict = Counter(char)
