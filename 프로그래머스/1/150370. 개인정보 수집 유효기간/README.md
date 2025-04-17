@@ -1,10 +1,10 @@
 # [level 1] 개인정보 수집 유효기간 - 150370 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/150370) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/150370?language=go) 
 
 ### 성능 요약
 
-메모리: 10.4 MB, 시간: 0.42 ms
+메모리: 3.56 MB, 시간: 0.06 ms
 
 ### 구분
 
@@ -16,7 +16,7 @@
 
 ### 제출 일자
 
-2023년 10월 3일 16:57:26
+2025년 04월 17일 16:30:08
 
 ### 문제 설명
 
