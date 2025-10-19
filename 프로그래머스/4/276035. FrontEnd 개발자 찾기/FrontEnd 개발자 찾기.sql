@@ -1,0 +1,12 @@
+SELECT
+    DISTINCT dev.ID,
+    dev.EMAIL,
+    dev.FIRST_NAME,
+    dev.LAST_NAME
+FROM DEVELOPERS AS dev
+    CROSS JOIN SKILLCODES AS sc
+WHERE
+    sc.CATEGORY = 'Front End'
+    AND dev.SKILL_CODE & sc.CODE > 0
+ORDER BY
+    dev.ID
