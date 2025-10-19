@@ -1,0 +1,16 @@
+-- 코드를 입력하세요
+SELECT
+    ap.APNT_NO,
+    p.PT_NAME,
+    ap.PT_NO,
+    ap.MCDP_CD,
+    d.DR_NAME,
+    ap.APNT_YMD
+FROM APPOINTMENT AS ap
+    LEFT JOIN PATIENT AS p ON ap.PT_NO = p.PT_NO
+    LEFT JOIN DOCTOR AS d ON ap.MDDR_ID = d.DR_ID
+WHERE
+    ap.APNT_CNCL_YN = 'N'
+    AND ap.MCDP_CD = 'CS'
+    AND DATE(APNT_YMD) = DATE('2022-04-13')
+ORDER BY ap.APNT_YMD
